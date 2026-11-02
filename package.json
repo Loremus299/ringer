@@ -1,25 +1,24 @@
 {
-  "name": "ringer",
-  "private": true,
-  "scripts": {
-    "dev": "turbo run dev"
-  },
-  "devDependencies": {
-    "prettier": "3.9.6",
-    "turbo": "^2.11.10",
-    "typescript": "7.0.2"
-  },
-  "engines": {
-    "node": ">=24"
-  },
-  "devEngines": {
-    "packageManager": {
-      "name": "bun",
-      "version": "1.4.2"
-    }
-  },
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+	"name": "ringer",
+	"private": true,
+	"scripts": {
+		"dev": "turbo run dev"
+	},
+	"devDependencies": {
+		"turbo": "^2.11.10",
+		"typescript": "7.0.2"
+	},
+	"engines": {
+		"node": ">=24"
+	},
+	"devEngines": {
+		"packageManager": {
+			"name": "bun",
+			"version": "1.4.2"
+		}
+	},
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	]
 }
