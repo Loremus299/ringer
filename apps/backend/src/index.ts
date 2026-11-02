@@ -3,6 +3,7 @@ import express from "express";
 import docs from "./docs";
 import env from "./env";
 import loggerWare from "./log";
+import authRouter from "./auth";
 
 const app = express();
 docs.servers([
@@ -26,5 +27,6 @@ app.get(
   }),
 );
 app.use(loggerWare);
+app.use("/auth", authRouter)
 
 app.listen(env.port, () => console.log(`Server Up - ${env.port}`));
