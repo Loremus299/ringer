@@ -7,8 +7,11 @@
     "dev": "bun --hot src/index.ts"
   },
   "devDependencies": {
+    "@types/bun": "latest",
     "@types/express": "^5.0.6",
-    "@types/bun": "latest"
+    "@types/pg": "^8.23.1",
+    "drizzle-kit": "^1.0.0-rc.5",
+    "tsx": "^4.23.15"
   },
   "peerDependencies": {
     "typescript": "^7"
@@ -17,6 +20,8 @@
     "@loremus299/lychee": "^2.0.2",
     "@loremus299/strawberry": "^1.1.0",
     "@scalar/express-api-reference": "^0.10.34",
-    "express": "^5.3.0"
+    "drizzle-orm": "^1.0.0-rc.5",
+    "express": "^5.3.0",
+    "pg": "^8.23.1"
   }
 }
