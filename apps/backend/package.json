@@ -17,6 +17,7 @@
     "typescript": "^7"
   },
   "dependencies": {
+    "@ringer/schemas": "workspace:*",
     "@loremus299/lychee": "^2.0.2",
     "@loremus299/pineapple": "^1.1.0",
     "@loremus299/strawberry": "^1.1.0",

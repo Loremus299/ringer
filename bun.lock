@@ -15,6 +15,7 @@
         "@loremus299/lychee": "^2.0.2",
         "@loremus299/pineapple": "^1.1.0",
         "@loremus299/strawberry": "^1.1.0",
+        "@ringer/schemas": "workspace:*",
         "@scalar/express-api-reference": "^0.10.34",
         "drizzle-orm": "^1.0.0-rc.5",
         "express": "^5.3.0",
