@@ -25,6 +25,8 @@ export const sessionTable = pgTable("sessions", {
 
   owner: text("owner").references(() => usersTable.id).notNull(),
   token: text("token").notNull(),
+  userAgent: text("user_agent").notNull(),
+
   createdAt: timestamp("created_at")
     .$defaultFn(() => new Date())
     .notNull(),

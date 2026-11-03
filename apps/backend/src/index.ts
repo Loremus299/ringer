@@ -1,9 +1,9 @@
 import { apiReference } from "@scalar/express-api-reference";
 import express from "express";
+import authRouter from "./auth";
 import docs from "./docs";
 import env from "./env";
 import loggerWare from "./log";
-import authRouter from "./auth";
 
 const app = express();
 docs.servers([
