@@ -1,4 +1,4 @@
-import { e409, e500 } from "@ringer/schemas/errors";
+import { e400, e409, e500 } from "@ringer/schemas/errors";
 import { authDocs } from "./docs";
 import {
 	authUserPostBody,
@@ -38,6 +38,7 @@ const action = route.documentFunction({
 		500: e500(),
 	},
 });
+route.response(400, "Failed to parse request body", "application/json", e400);
 
 const userPost = action(async ({ body, header }, log: Logger) => {
 	log.debug("action", { body, header });

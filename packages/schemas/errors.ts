@@ -1,5 +1,7 @@
 import { type ZodType, z } from "zod";
 
+export const e400 = z.array(z.any());
+
 interface LycheeError {
 	description: string;
 	type: string;

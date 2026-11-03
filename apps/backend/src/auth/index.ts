@@ -15,8 +15,9 @@ authRouter.post("/user", async (req, res) => {
 		if (201 in data) return res.status(201).type("text/plain").send(data[201]);
 		if (409 in data) return res.status(409).type("text/plain").send(data[409]);
 		if (500 in data) return res.status(500).type("text/plain").send(data[500]);
-	} catch (error) {
-		return res.sendStatus(400);
+	} catch (e) {
+		//@ts-expect-error
+		return res.status(400).json({ errors: e.issues });
 	}
 });
 export default authRouter;
