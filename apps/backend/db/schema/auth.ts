@@ -24,7 +24,7 @@ export const sessionTable = pgTable("sessions", {
 		.$defaultFn(() => globalThis.crypto.randomUUID()),
 
 	owner: text("owner")
-		.references(() => usersTable.id)
+		.references(() => usersTable.id, { onDelete: "cascade" })
 		.notNull(),
 	token: text("token").notNull().unique(),
 	userAgent: text("user_agent").notNull(),

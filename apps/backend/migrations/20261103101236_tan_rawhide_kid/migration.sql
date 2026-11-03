@@ -1,0 +1,2 @@
+ALTER TABLE "sessions" ADD CONSTRAINT "sessions_token_key" UNIQUE("token");--> statement-breakpoint
+ALTER TABLE "sessions" DROP CONSTRAINT "sessions_owner_users_id_fkey", ADD CONSTRAINT "sessions_owner_users_id_fkey" FOREIGN KEY ("owner") REFERENCES "users"("id") ON DELETE CASCADE;

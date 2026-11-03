@@ -1,0 +1,78 @@
+{
+  "type": "diff",
+  "version": "9",
+  "dialect": "postgres",
+  "id": "220b8e05-8dfe-4062-9de6-02843726ce63",
+  "prevIds": [
+    "6aaa54bc-2677-4a8f-838b-ab831b398e55"
+  ],
+  "footprints": [
+    {
+      "statementType": "add_unique",
+      "statementTarget": [
+        "table",
+        "public",
+        "sessions"
+      ],
+      "writes": [
+        "s|uq|public.sessions.sessions_token_key",
+        "n|uq|public.sessions.sessions_token_key",
+        "e|uq|public.sessions.sessions_token_key",
+        "n|con|public.sessions.sessions_token_key",
+        "n|rel|public.sessions_token_key"
+      ],
+      "reads": [
+        "n|tbl|public.sessions",
+        "n|sch|public",
+        "n|col|public.sessions.token"
+      ]
+    },
+    {
+      "statementType": "recreate_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "sessions"
+      ],
+      "writes": [
+        "s|fk|public.sessions.sessions_owner_users_id_fkey",
+        "n|fk|public.sessions.sessions_owner_users_id_fkey",
+        "e|fk|public.sessions.sessions_owner_users_id_fkey",
+        "n|con|public.sessions.sessions_owner_users_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.sessions",
+        "n|sch|public",
+        "n|tbl|public.users",
+        "n|sch|public",
+        "n|col|public.sessions.owner",
+        "n|col|public.users.id",
+        "e|uniqueness|public.users.id"
+      ],
+      "sqlHash": "07d0de7295879eef"
+    }
+  ],
+  "deltas": [
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "sessions",
+        "name": "sessions_token_key",
+        "nameExplicit": false,
+        "columns": [
+          "token"
+        ],
+        "nullsNotDistinct": false,
+        "entityType": "uniques"
+      }
+    },
+    {
+      "op": "alter",
+      "key": "fks\u0000[\"public\",\"sessions\",\"sessions_owner_users_id_fkey\"]",
+      "set": {
+        "onDelete": "CASCADE"
+      }
+    }
+  ]
+}
