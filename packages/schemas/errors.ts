@@ -8,19 +8,19 @@ interface LycheeError {
 	zod: ZodType;
 }
 
-export function e404(): LycheeError {
+export function e404(resource: string): LycheeError {
 	return {
 		description: "Resource not found",
 		type: "text/plain",
-		zod: z.string(),
+		zod: z.literal(resource),
 	};
 }
 
-export function e409(): LycheeError {
+export function e409(resource: string): LycheeError {
 	return {
 		description: "Resource Conflict",
 		type: "text/plain",
-		zod: z.string(),
+		zod: z.literal(resource),
 	};
 }
 
@@ -29,5 +29,13 @@ export function e500(): LycheeError {
 		description: "Internal Server Error",
 		type: "text/plain",
 		zod: z.literal("Internal Server Error"),
+	};
+}
+
+export function e401(resource: string): LycheeError {
+	return {
+		description: "Unauthenticated Resource access",
+		type: "text/plain",
+		zod: z.literal(resource),
 	};
 }

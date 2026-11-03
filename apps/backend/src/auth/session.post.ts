@@ -34,7 +34,7 @@ const action = route.documentFunction({
 			type: "text/plain",
 			zod: authSessionPostResponse,
 		},
-		404: e404(),
+		404: e404("user"),
 		500: e500(),
 	},
 });

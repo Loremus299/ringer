@@ -7,6 +7,8 @@ import {
 import { Router } from "express";
 import userPost from "./user.post";
 import sessionPost from "./session.post";
+import sessionGet from "./get.session";
+import authMiddleware, { type AuthedRequest } from "./middleware";
 
 const authRouter = Router();
 authRouter.post("/user", async (req, res) => {
@@ -58,6 +60,23 @@ authRouter.post("/session", async (req, res) => {
 				.send(data[201]);
 		if (404 in data) return res.status(404).type("text/plain").send(data[404]);
 		if (500 in data) return res.status(500).type("text/plain").send(data[500]);
+	} catch (e) {
+		//@ts-expect-error
+		return res.status(400).json({ errors: e.issues });
+	}
+});
+authRouter.get("/session", authMiddleware, async (req, res) => {
+	try {
+		const { user, session } = req as AuthedRequest;
+
+		const data = await sessionGet(
+			{},
+			user.id,
+			session.token,
+			req.log.nest("Service"),
+		);
+		if (500 in data) return res.status(500).type("text/plain").send(data[500]);
+		if (200 in data) return res.status(200).json(data[200]);
 	} catch (e) {
 		//@ts-expect-error
 		return res.status(400).json({ errors: e.issues });

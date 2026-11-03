@@ -34,7 +34,7 @@ const action = route.documentFunction({
 			type: "text/plain",
 			zod: authUserPostResponse,
 		},
-		409: e409(),
+		409: e409("email"),
 		500: e500(),
 	},
 });

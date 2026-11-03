@@ -23,3 +23,15 @@ export const authSessionPostHeaders = z.object({
 });
 
 export const authSessionPostResponse = z.string().startsWith("ringer-session-");
+
+export const authMiddlewareCookie = z.object({
+	session: z.string().startsWith("ringer-session-"),
+});
+
+export const authSessionGetResponse = z.array(
+	z.object({
+		id: z.uuidv4(),
+		userAgent: z.string(),
+		current: z.boolean(),
+	}),
+);
