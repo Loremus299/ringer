@@ -7,26 +7,26 @@ import loggerWare from "./log";
 
 const app = express();
 docs.servers([
-  {
-    url: `http://localhost:${env.port}`,
-    description: "Local development server",
-  },
-  {
-    url: "${env.backend}",
-    description: "Environment variable"
-  }
+	{
+		url: `http://localhost:${env.port}`,
+		description: "Local development server",
+	},
+	{
+		url: "${env.backend}",
+		description: "Environment variable",
+	},
 ]);
 app.get("/openapi", (_req, res) => res.json(docs.docs));
 app.get(
-  "/",
-  apiReference({
-    url: "/openapi",
-    theme: "elysiajs",
-    showDeveloperTools: "never",
-    showOperationId: true,
-  }),
+	"/",
+	apiReference({
+		url: "/openapi",
+		theme: "elysiajs",
+		showDeveloperTools: "never",
+		showOperationId: true,
+	}),
 );
 app.use(loggerWare);
-app.use("/auth", authRouter)
+app.use("/auth", authRouter);
 
 app.listen(env.port, () => console.log(`Server Up - ${env.port}`));

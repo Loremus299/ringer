@@ -1,3 +1,3 @@
-import docs from "../docs"
+import docs from "../docs";
 
-export const authDocs = docs.middleware("/auth", {})
+export const authDocs = docs.middleware("/auth", {});
