@@ -8,6 +8,14 @@ interface LycheeError {
 	zod: ZodType;
 }
 
+export function e404(): LycheeError {
+	return {
+		description: "Resource not found",
+		type: "text/plain",
+		zod: z.string(),
+	};
+}
+
 export function e409(): LycheeError {
 	return {
 		description: "Resource Conflict",

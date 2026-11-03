@@ -12,3 +12,14 @@ export const authUserPostHeaders = z.object({
 });
 
 export const authUserPostResponse = z.string().startsWith("ringer-session-");
+
+export const authSessionPostBody = z.object({
+	email: z.email(),
+	password: z.string(),
+});
+
+export const authSessionPostHeaders = z.object({
+	"user-agent": z.string(),
+});
+
+export const authSessionPostResponse = z.string().startsWith("ringer-session-");
