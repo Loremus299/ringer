@@ -4,6 +4,8 @@ import authRouter from "./auth";
 import docs from "./docs";
 import env from "./env";
 import loggerWare from "./log";
+import cookieParser from "cookie-parser";
+import cors from "cors";
 
 const app = express();
 docs.servers([
@@ -26,8 +28,11 @@ app.get(
 		showOperationId: true,
 	}),
 );
-app.use(express.json());
 app.use(loggerWare);
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cookieParser());
+app.use(express.json());
+
 app.use("/auth", authRouter);
 
 app.listen(env.port, () => console.log(`Server Up - ${env.port}`));

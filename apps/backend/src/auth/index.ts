@@ -18,7 +18,17 @@ authRouter.post("/user", async (req, res) => {
 			{ body, header },
 			req.log.nest("Create user service"),
 		);
-		if (201 in data) return res.status(201).type("text/plain").send(data[201]);
+		if (201 in data)
+			return res
+				.status(201)
+				.cookie("session", data[201], {
+					httpOnly: true,
+					secure: true,
+					sameSite: "lax",
+					maxAge: 24 * 60 * 60 * 1000,
+				})
+				.type("text/plain")
+				.send(data[201]);
 		if (409 in data) return res.status(409).type("text/plain").send(data[409]);
 		if (500 in data) return res.status(500).type("text/plain").send(data[500]);
 	} catch (e) {
@@ -35,7 +45,17 @@ authRouter.post("/session", async (req, res) => {
 			{ body, header },
 			req.log.nest("Create session service"),
 		);
-		if (201 in data) return res.status(201).type("text/plain").send(data[201]);
+		if (201 in data)
+			return res
+				.status(201)
+				.cookie("session", data[201], {
+					httpOnly: true,
+					secure: true,
+					sameSite: "lax",
+					maxAge: 24 * 60 * 60 * 1000,
+				})
+				.type("text/plain")
+				.send(data[201]);
 		if (404 in data) return res.status(404).type("text/plain").send(data[404]);
 		if (500 in data) return res.status(500).type("text/plain").send(data[500]);
 	} catch (e) {
