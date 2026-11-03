@@ -10,7 +10,7 @@ export function e409(): LycheeError {
 	return {
 		description: "Resource Conflict",
 		type: "text/plain",
-		zod: z.enum(["email"]),
+		zod: z.string(),
 	};
 }
 

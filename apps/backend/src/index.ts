@@ -26,6 +26,7 @@ app.get(
 		showOperationId: true,
 	}),
 );
+app.use(express.json());
 app.use(loggerWare);
 app.use("/auth", authRouter);
 
