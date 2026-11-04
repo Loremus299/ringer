@@ -5,15 +5,18 @@ import { useState } from "react";
 import { cn } from "#lib/utils";
 import { Button } from "#components/ui/button";
 import { Eye } from "lucide-react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const routes = [{ path: "/", element: <Root /> }];
 const router = createBrowserRouter(routes);
+const queryClient = new QueryClient();
 
 export default function App() {
 	const [routeDisplay, setRouteDisplay] = useState(true);
 
 	return (
-		<>
+		<QueryClientProvider client={queryClient}>
 			<RouterProvider router={router} />
 			<Button
 				className={"absolute top-1 right-1"}
@@ -33,6 +36,7 @@ export default function App() {
 					</a>
 				))}
 			</div>
-		</>
+			<ReactQueryDevtools />
+		</QueryClientProvider>
 	);
 }
