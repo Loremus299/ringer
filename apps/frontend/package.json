@@ -28,7 +28,7 @@
 	},
 	"scripts": {
 		"dev": "bun run --parallel dev:css dev:js",
-		"dev:css": "tailwindcss -i index.css -o public/assets/styles.css --watch",
+		"dev:css": "tailwindcss -i index.css -o public/assets/styles.css --watch=always",
 		"dev:js": "esbuild main.tsx --bundle --outdir=public/assets --servedir=public --serve=3000 --watch=forever"
 	},
 	"imports": {
