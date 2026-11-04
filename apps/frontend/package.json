@@ -11,11 +11,15 @@
 		"react-dom": "^19.3.1"
 	},
 	"devDependencies": {
+		"@tailwindcss/cli": "^4.3.4",
 		"@types/react": "^19.3.0",
 		"@types/react-dom": "^19.3.0",
-		"esbuild": "^0.28.2"
+		"esbuild": "^0.28.2",
+		"tailwindcss": "^4.3.4"
 	},
 	"scripts": {
-		"dev": "esbuild main.tsx --bundle --outdir=public/assets --servedir=public --serve=3000 --watch"
+		"dev": "bun run --parallel dev:css dev:js",
+		"dev:css": "tailwindcss -i index.css -o public/assets/styles.css --watch",
+		"dev:js": "esbuild main.tsx --bundle --outdir=public/assets --servedir=public --serve=3000 --watch=forever"
 	}
 }
