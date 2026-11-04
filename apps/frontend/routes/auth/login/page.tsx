@@ -14,7 +14,7 @@ import { Navigate, useNavigate } from "react-router";
 
 export default function Page() {
 	const cookie = getCookie("loggedIn") == "true";
-	if (cookie) return <Navigate to="/" replace />;
+	if (cookie) return <Navigate to="/dashboard" replace />;
 
 	const [password, setPassword] = useState(true);
 	const navigate = useNavigate();

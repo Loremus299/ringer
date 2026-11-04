@@ -10,11 +10,15 @@ import Root from "./routes/page";
 import { Toaster } from "#components/ui/toast";
 import AuthRegister from "./routes/auth/register/page";
 import AuthLogin from "./routes/auth/login/page";
+import Dashboard from "./routes/(user)/dashboard/page";
+import Settings from "./routes/(user)/settings/page";
 
 const routes = [
 	{ path: "/", element: <Root /> },
 	{ path: "/auth/register", element: <AuthRegister /> },
 	{ path: "/auth/login", element: <AuthLogin /> },
+	{ path: "/dashboard", element: <Dashboard /> },
+	{ path: "/settings", element: <Settings /> },
 ];
 const router = createBrowserRouter(routes);
 const queryClient = new QueryClient();

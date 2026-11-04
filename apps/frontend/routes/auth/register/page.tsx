@@ -5,7 +5,7 @@ import RegisterForm from "./register-form";
 
 export default function Page() {
 	const cookie = getCookie("loggedIn") == "true";
-	if (cookie) return <Navigate to="/" replace />;
+	if (cookie) return <Navigate to="/dashboard" replace />;
 
 	return (
 		<Container>

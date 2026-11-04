@@ -1,9 +1,12 @@
+import { useNavigate } from "react-router";
 import e404 from "./404";
 import e409 from "./409";
 import e500 from "./500";
 
 export default async function handleError(res: Response) {
 	switch (res.status) {
+		case 401:
+			return window.location.replace("/auth/login");
 		case 404:
 			return e404(await res.text());
 		case 409:
