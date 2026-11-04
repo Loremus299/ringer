@@ -33,5 +33,7 @@ export const authSessionGetResponse = z.array(
 		id: z.uuidv4(),
 		userAgent: z.string(),
 		current: z.boolean(),
+		createdAt: z.string(),
+		expiration: z.string(),
 	}),
 );

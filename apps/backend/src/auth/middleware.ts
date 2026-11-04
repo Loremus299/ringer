@@ -43,8 +43,9 @@ export default async function authMiddleware(
 			)
 		).one();
 
-		if (!session.outcome.success && session.outcome.error == NoRows)
+		if (!session.outcome.success && session.outcome.error == NoRows) {
 			return res.status(401).type("text/plain").send("user session");
+		}
 
 		if (!session.outcome.success)
 			return res.status(500).type("text/plain").send("Internal Server Error");

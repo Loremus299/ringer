@@ -46,6 +46,8 @@ const sessionGet = action(
 				current: item.token == currentToken,
 				id: item.id,
 				userAgent: item.userAgent,
+				createdAt: item.createdAt.toISOString(),
+				expiration: item.expiredAt.toISOString(),
 			})),
 		};
 	},
