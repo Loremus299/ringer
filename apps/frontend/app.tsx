@@ -8,8 +8,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Root from "./routes/page";
 import { Toaster } from "#components/ui/toast";
+import AuthRegister from "./routes/auth/register/page";
 
-const routes = [{ path: "/", element: <Root /> }];
+const routes = [
+	{ path: "/", element: <Root /> },
+	{ path: "/auth/register", element: <AuthRegister /> },
+];
 const router = createBrowserRouter(routes);
 const queryClient = new QueryClient();
 

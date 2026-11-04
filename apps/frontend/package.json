@@ -7,8 +7,9 @@
 		"typescript": "^7"
 	},
 	"dependencies": {
-		"@ringer/schemas": "workspace:*",
 		"@base-ui/react": "^1.9.0",
+		"@hookform/resolvers": "^7.0.2",
+		"@ringer/schemas": "workspace:*",
 		"@tanstack/react-query": "^5.105.3",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
