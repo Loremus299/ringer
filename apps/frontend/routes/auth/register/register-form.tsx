@@ -4,11 +4,15 @@ import { authUserPostBody } from "@ringer/schemas";
 import FormController from "#components/badcn/formController";
 import { Input } from "#components/ui/input";
 import LoadingButton from "#components/badcn/loadingButton";
-import { UserPlus } from "lucide-react";
+import { Eye, EyeClosed, UserPlus } from "lucide-react";
 import handleError from "@/routes/errors";
 import { useNavigate } from "react-router";
+import { useState } from "react";
+import { Button } from "#components/ui/button";
+import { env } from "#lib/utils";
 
 export default function RegisterForm() {
+	const [password, setPassword] = useState(true);
 	const navigate = useNavigate();
 	const form = useForm({
 		resolver: zodResolver(authUserPostBody),
@@ -16,7 +20,7 @@ export default function RegisterForm() {
 	});
 
 	const onSubmit = async (values: typeof authUserPostBody._output) => {
-		const req = await fetch("http://localhost:8080/auth/user", {
+		const req = await fetch(`${env.backend}/auth/user`, {
 			method: "POST",
 			credentials: "include",
 			headers: {
@@ -68,13 +72,19 @@ export default function RegisterForm() {
 				name="password"
 				label="Password"
 				render={({ field, fieldState }) => (
-					<Input
-						{...field}
-						id={field.name}
-						aria-invalid={fieldState.invalid}
-						autoComplete="newPassword"
-						placeholder="our little secret ;3"
-					/>
+					<div className="flex gap-2">
+						<Input
+							{...field}
+							id={field.name}
+							aria-invalid={fieldState.invalid}
+							type={password ? "password" : "text"}
+							autoComplete="newPassword"
+							placeholder="our little secret ;3"
+						/>
+						<Button variant={"outline"} onClick={() => setPassword(!password)}>
+							{password ? <Eye /> : <EyeClosed />}
+						</Button>
+					</div>
 				)}
 			/>
 			<LoadingButton

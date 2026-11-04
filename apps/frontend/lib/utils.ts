@@ -11,3 +11,7 @@ export function getCookie(name: string) {
 		.find((row) => row.startsWith(`${name}=`))
 		?.split("=")[1];
 }
+
+export const env = {
+	backend: "http://localhost:8080",
+};
