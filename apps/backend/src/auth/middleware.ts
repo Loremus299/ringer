@@ -3,7 +3,7 @@ import type { NextFunction, Request, Response } from "express";
 import db from "../../db";
 import Result, { NoRows } from "@loremus299/pineapple";
 import { sessionTable, usersTable } from "../../db/schema";
-import { DrizzleError, eq } from "drizzle-orm";
+import { DrizzleError, eq, and, gt, lt } from "drizzle-orm";
 import { createHash } from "node:crypto";
 
 export type AuthedRequest = Request & {
@@ -33,7 +33,12 @@ export default async function authMiddleware(
 						.select()
 						.from(sessionTable)
 						.innerJoin(usersTable, eq(sessionTable.owner, usersTable.id))
-						.where(eq(sessionTable.token, tokenHash)),
+						.where(
+							and(
+								eq(sessionTable.token, tokenHash),
+								gt(sessionTable.expiredAt, new Date()),
+							),
+						),
 				DrizzleError,
 			)
 		).one();

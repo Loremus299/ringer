@@ -33,6 +33,6 @@ export const sessionTable = pgTable("sessions", {
 		.$defaultFn(() => new Date())
 		.notNull(),
 	expiredAt: timestamp("expired_at")
-		.$defaultFn(() => new Date(Date.now() + 24 * 60 * 60 * 1000))
+		.$defaultFn(() => new Date(Date.now() + 30 * 24 * 60 * 60 * 1000))
 		.notNull(),
 });

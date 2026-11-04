@@ -15,7 +15,8 @@ import argon2 from "argon2";
 
 const route = authDocs.path("/session", "post", {
 	summary: "New Session",
-	description: "Create new session for an existing user",
+	description:
+		"Create new session for an existing user. Session token returned in cookie and body.",
 	operationId: "auth-post-session",
 	tags: ["Auth"],
 });

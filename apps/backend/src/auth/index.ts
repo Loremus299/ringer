@@ -54,7 +54,7 @@ authRouter.post("/session", async (req, res) => {
 					httpOnly: true,
 					secure: true,
 					sameSite: "lax",
-					maxAge: 24 * 60 * 60 * 1000,
+					maxAge: 30 * 24 * 60 * 60 * 1000,
 				})
 				.type("text/plain")
 				.send(data[201]);

@@ -15,7 +15,8 @@ import { createHash } from "node:crypto";
 
 const route = authDocs.path("/user", "post", {
 	summary: "New User",
-	description: "Create new user account and a session",
+	description:
+		"Create new user account and a session. Session token returned in body and cookie",
 	operationId: "auth-post-user",
 	tags: ["Auth"],
 });
@@ -23,7 +24,7 @@ const route = authDocs.path("/user", "post", {
 const action = route.documentFunction({
 	body: {
 		type: "application/json",
-		description: "Name, email and password",
+		description: "Name, email and password.",
 		required: true,
 		zod: authUserPostBody,
 	},
