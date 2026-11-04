@@ -44,6 +44,7 @@ export default async function authMiddleware(
 		).one();
 
 		if (!session.outcome.success && session.outcome.error == NoRows) {
+			res.clearCookie("loggedIn");
 			return res.status(401).type("text/plain").send("user session");
 		}
 

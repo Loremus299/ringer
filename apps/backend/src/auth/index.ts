@@ -29,6 +29,12 @@ authRouter.post("/user", async (req, res) => {
 					sameSite: "lax",
 					maxAge: 24 * 60 * 60 * 1000,
 				})
+				.cookie("loggedIn", data[201], {
+					httpOnly: false,
+					secure: true,
+					sameSite: "lax",
+					maxAge: 30 * 24 * 60 * 60 * 1000,
+				})
 				.type("text/plain")
 				.send(data[201]);
 		if (409 in data) return res.status(409).type("text/plain").send(data[409]);
@@ -52,6 +58,12 @@ authRouter.post("/session", async (req, res) => {
 				.status(201)
 				.cookie("session", data[201], {
 					httpOnly: true,
+					secure: true,
+					sameSite: "lax",
+					maxAge: 30 * 24 * 60 * 60 * 1000,
+				})
+				.cookie("loggedIn", data[201], {
+					httpOnly: false,
 					secure: true,
 					sameSite: "lax",
 					maxAge: 30 * 24 * 60 * 60 * 1000,
