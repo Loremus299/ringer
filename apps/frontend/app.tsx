@@ -1,5 +1,4 @@
-import { createBrowserRouter, Link, Outlet } from "react-router";
-import Root from "./routes/page";
+import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import { useState } from "react";
 import { cn } from "#lib/utils";
@@ -7,6 +6,7 @@ import { Button } from "#components/ui/button";
 import { Eye } from "lucide-react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Root from "./routes/page";
 
 const routes = [{ path: "/", element: <Root /> }];
 const router = createBrowserRouter(routes);
