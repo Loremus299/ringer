@@ -33,7 +33,7 @@ authRouter.post("/user", async (req, res) => {
 					httpOnly: false,
 					secure: true,
 					sameSite: "lax",
-					maxAge: 30 * 24 * 60 * 60 * 1000,
+					maxAge: 24 * 60 * 60 * 1000,
 				})
 				.type("text/plain")
 				.send(data[201]);
@@ -60,13 +60,13 @@ authRouter.post("/session", async (req, res) => {
 					httpOnly: true,
 					secure: true,
 					sameSite: "lax",
-					maxAge: 30 * 24 * 60 * 60 * 1000,
+					maxAge: 24 * 60 * 60 * 1000,
 				})
 				.cookie("loggedIn", data[201], {
 					httpOnly: false,
 					secure: true,
 					sameSite: "lax",
-					maxAge: 30 * 24 * 60 * 60 * 1000,
+					maxAge: 24 * 60 * 60 * 1000,
 				})
 				.type("text/plain")
 				.send(data[201]);
