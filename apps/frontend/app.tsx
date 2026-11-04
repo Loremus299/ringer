@@ -7,6 +7,7 @@ import { Eye } from "lucide-react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Root from "./routes/page";
+import { Toaster } from "#components/ui/toast";
 
 const routes = [{ path: "/", element: <Root /> }];
 const router = createBrowserRouter(routes);
@@ -18,6 +19,7 @@ export default function App() {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<RouterProvider router={router} />
+			<Toaster />
 			<Button
 				className={"absolute top-1 right-1"}
 				onClick={() => setRouteDisplay(!routeDisplay)}
