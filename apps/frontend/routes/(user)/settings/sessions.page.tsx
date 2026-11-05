@@ -1,7 +1,30 @@
+import { FromNowHoverCard } from "#components/badcn/fromNowHoverCard";
+import LoadingButton from "#components/badcn/loadingButton";
+import {
+	Card,
+	CardAction,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "#components/ui/card";
 import { env } from "#lib/utils";
 import handleError from "@/routes/errors";
 import type { authSessionGetResponse } from "@ringer/schemas";
 import { useQuery } from "@tanstack/react-query";
+import { X } from "lucide-react";
+
+function getOS(ua: string) {
+	if (/Windows NT 10\.0/.test(ua)) return "Windows 10/11";
+	if (/Windows NT 6\.3/.test(ua)) return "Windows 8.1";
+	if (/Windows NT 6\.2/.test(ua)) return "Windows 8";
+	if (/Windows NT 6\.1/.test(ua)) return "Windows 7";
+	if (/Mac OS X/.test(ua) && /iPhone|iPad|iPod/.test(ua)) return "iOS/iPadOS";
+	if (/Mac OS X/.test(ua)) return "macOS";
+	if (/Android/.test(ua)) return "Android";
+	if (/Linux/.test(ua)) return "Linux";
+	return "Unknown";
+}
 
 export default function Sessions() {
 	const sessions = useQuery({
@@ -20,9 +43,23 @@ export default function Sessions() {
 	if (sessions.isError) return <div>Error....</div>;
 
 	return (
-		<div>
+		<div className="grid gap-4">
 			{sessions.data.map((item) => (
-				<div key={item.id}></div>
+				<Card key={item.id}>
+					<CardHeader>
+						<CardTitle>{getOS(item.userAgent)}</CardTitle>
+						<CardDescription>{item.userAgent}</CardDescription>
+						<CardAction>
+							<LoadingButton size={"icon-xs"} variant={"outline"}>
+								<X />
+							</LoadingButton>
+						</CardAction>
+					</CardHeader>
+					<CardContent className="mt-4 flex gap-2">
+						Created <FromNowHoverCard date={item.createdAt} />, expiration
+						<FromNowHoverCard date={item.expiration} />
+					</CardContent>
+				</Card>
 			))}
 		</div>
 	);

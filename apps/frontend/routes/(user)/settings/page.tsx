@@ -9,8 +9,9 @@ export default function Page() {
 
 	return (
 		<Container>
-			<Sessions />
-			<Link to={"/dashboard"}>Hi</Link>
+			<div className="min-h-screen w-full p-4">
+				<Sessions />
+			</div>
 		</Container>
 	);
 }
