@@ -47,7 +47,16 @@ export default function Sessions() {
 			{sessions.data.map((item) => (
 				<Card key={item.id}>
 					<CardHeader>
-						<CardTitle>{getOS(item.userAgent)}</CardTitle>
+						<CardTitle className="flex gap-2 items-center">
+							{getOS(item.userAgent)}{" "}
+							{item.current ? (
+								<div className="text-sm border rounded p-2 pt-0.5 pb-0.5 bg-accent-foreground text-background">
+									Current
+								</div>
+							) : (
+								""
+							)}
+						</CardTitle>
 						<CardDescription>{item.userAgent}</CardDescription>
 						<CardAction>
 							<LoadingButton size={"icon-xs"} variant={"outline"}>

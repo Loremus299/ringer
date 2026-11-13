@@ -6,7 +6,7 @@ import { Input } from "#components/ui/input";
 import LoadingButton from "#components/badcn/loadingButton";
 import { Eye, EyeClosed, UserPlus } from "lucide-react";
 import handleError from "@/routes/errors";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useState } from "react";
 import { Button } from "#components/ui/button";
 import { env } from "#lib/utils";
@@ -30,7 +30,7 @@ export default function RegisterForm() {
 		});
 
 		await handleError(req);
-		if (req.ok) return navigate("/", { replace: true });
+		if (req.ok) return navigate("/dashboard", { replace: true });
 	};
 
 	return (
@@ -94,6 +94,12 @@ export default function RegisterForm() {
 			>
 				<UserPlus /> sudo adduser
 			</LoadingButton>
+			<Link
+				to={"/auth/login"}
+				className="text-muted-foreground underline underline-offset-2"
+			>
+				Already a user ? Login.
+			</Link>
 		</form>
 	);
 }

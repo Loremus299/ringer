@@ -10,7 +10,7 @@ import { authSessionPostBody } from "@ringer/schemas";
 import { Eye, EyeClosed, User } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Navigate, useNavigate } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
 
 export default function Page() {
 	const cookie = getCookie("loggedIn") == "true";
@@ -34,7 +34,7 @@ export default function Page() {
 		});
 
 		await handleError(req);
-		if (req.ok) return navigate("/", { replace: true });
+		if (req.ok) return navigate("/dashboard", { replace: true });
 	};
 
 	return (
@@ -89,6 +89,12 @@ export default function Page() {
 					>
 						<User /> su -
 					</LoadingButton>
+					<Link
+						to={"/auth/register"}
+						className="text-muted-foreground underline underline-offset-2"
+					>
+						New User ? Register.
+					</Link>
 				</form>
 			</div>
 		</Container>
